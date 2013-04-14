@@ -1,0 +1,24 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: mellowgasm_development
+  pool: 5
+  username: AdiSingh
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: mellowgasm_test
+  pool: 5
+  username: AdiSingh
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: mellowgasm_production
+  pool: 5
+  username: AdiSingh
+  password:
