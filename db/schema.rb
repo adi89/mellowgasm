@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415022520) do
+ActiveRecord::Schema.define(:version => 20130415031532) do
 
   create_table "friends", :force => true do |t|
     t.string   "name"
@@ -61,8 +61,6 @@ ActiveRecord::Schema.define(:version => 20130415022520) do
     t.string   "name"
     t.string   "address"
     t.integer  "rating",        :default => 0
-    t.text     "venue_url"
-    t.text     "photo_url"
     t.integer  "total_votes",   :default => 0
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
@@ -70,6 +68,9 @@ ActiveRecord::Schema.define(:version => 20130415022520) do
     t.integer  "motivation_id"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "twitter"
+    t.string   "phone"
+    t.text     "crossStreet"
   end
 
 end
