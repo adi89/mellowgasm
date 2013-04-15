@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415000203) do
+ActiveRecord::Schema.define(:version => 20130415022520) do
 
   create_table "friends", :force => true do |t|
     t.string   "name"
     t.string   "phone"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "locations", :force => true do |t|
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20130415000203) do
     t.float    "longitude"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "motivations", :force => true do |t|
@@ -33,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20130415000203) do
     t.string   "categoryId"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "photos", :force => true do |t|
@@ -40,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20130415000203) do
     t.string   "url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "venue_id"
   end
 
   create_table "users", :force => true do |t|
@@ -56,12 +60,16 @@ ActiveRecord::Schema.define(:version => 20130415000203) do
   create_table "venues", :force => true do |t|
     t.string   "name"
     t.string   "address"
-    t.integer  "rating",      :default => 0
+    t.integer  "rating",        :default => 0
     t.text     "venue_url"
     t.text     "photo_url"
-    t.integer  "total_votes", :default => 0
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.integer  "total_votes",   :default => 0
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.integer  "location_id"
+    t.integer  "motivation_id"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
 end

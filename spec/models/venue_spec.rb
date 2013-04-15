@@ -22,5 +22,13 @@ describe Venue do
       expect(venue.id).to_not be nil
     end
   end
+  describe '#photos' do
+    it 'has many photos' do
+      venue = Venue.create(:name => 'a', :total_votes => 0)
+      venue.photos << FactoryGirl.create(:photo)
+      expect(venue.photos.count).to eq 1
+    end
+  end
+
 
 end
