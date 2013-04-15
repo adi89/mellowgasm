@@ -1,4 +1,3 @@
-
 class Venue < ActiveRecord::Base
   attr_accessible :name, :address, :rating, :total_votes, :latitude, :longitude, :crossStreet
   has_many :photos

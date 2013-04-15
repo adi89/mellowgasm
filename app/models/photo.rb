@@ -14,9 +14,6 @@ class Photo < ActiveRecord::Base
 attr_accessible :gender, :url
 belongs_to :venue
 
-
-
-
-
+mount_uploader :url, MellowgasmUploader
 
 end
