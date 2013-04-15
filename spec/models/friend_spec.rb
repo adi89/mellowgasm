@@ -9,3 +9,13 @@
 #  updated_at :datetime         not null
 #
 
+require 'spec_helper'
+
+describe Friend do
+  describe '.create' do
+    it 'has an id' do
+      friend = Friend.create(:name => 'Ralph', :phone => '6096906090')
+      expect(friend.id).to_not be nil
+    end
+  end
+end

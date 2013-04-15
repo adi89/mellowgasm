@@ -18,5 +18,11 @@ describe Motivation do
       expect(motivation.id).to_not be nil
     end
   end
-
+  describe '#venues' do
+    it 'has many venues' do
+      motivation = Motivation.create(:type => 'dive bar', :categoryId => "4bf58dd8d48988d118941735")
+      motivation.venues << FactoryGirl.create(:venue)
+      expect(motivation.venues.count).to eq 1
+    end
+  end
 end

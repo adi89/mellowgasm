@@ -1,11 +1,10 @@
-
 development:
   adapter: postgresql
   encoding: unicode
   database: mellowgasm_development
   pool: 5
   host: localhost
-  username: AdiSingh
+  username: josephwaine
   password:
 
 test:
@@ -14,7 +13,7 @@ test:
   database: mellowgasm_test
   host: localhost
   pool: 5
-  username: AdiSingh
+  username: josephwaine
   password:
 
 
@@ -24,5 +23,5 @@ production:
   database: mellowgasm_production
   pool: 5
   host: localhost
-  username: AdiSingh
+  username: josephwaine
   password:

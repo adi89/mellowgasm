@@ -22,5 +22,25 @@ describe User do
       expect(user.id).to_not be nil
     end
   end
-
+  describe '#friends' do
+    it 'has many friends' do
+      user = User.create(:password => 'a', :password_confirmation => 'a')
+      user.friends << FactoryGirl.create(:friend)
+      expect(user.friends.count).to eq 1
+    end
+  end
+  describe '#motivations' do
+    it 'has many motivations' do
+      user = User.create(:password => 'a', :password_confirmation => 'a')
+      user.motivations << FactoryGirl.create(:motivation)
+      expect(user.motivations.count).to eq 1
+    end
+  end
+  describe '#locations' do
+    it 'has many locations' do
+      user = User.create(:password => 'a', :password_confirmation => 'a')
+      user.locations << FactoryGirl.create(:location)
+      expect(user.locations.count).to eq 1
+    end
+  end
 end
