@@ -48,6 +48,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.8.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -76,6 +79,7 @@ GEM
     ethon (0.5.11)
       ffi (>= 1.3.0)
       mime-types (~> 1.18)
+    excon (0.20.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -88,6 +92,16 @@ GEM
     faraday_middleware (0.9.0)
       faraday (>= 0.7.4, < 0.9)
     ffi (1.7.0)
+    fog (1.10.1)
+      builder
+      excon (~> 0.20)
+      formatador (~> 0.2.0)
+      mime-types
+      multi_json (~> 1.0)
+      net-scp (~> 1.1)
+      net-ssh (>= 2.1.3)
+      nokogiri (~> 1.5.0)
+      ruby-hmac
     formatador (0.2.4)
     foursquare2 (1.9.5)
       faraday (~> 0.8)
@@ -151,6 +165,8 @@ GEM
     multipart-post (1.2.0)
     nestling (0.1.3)
       multi_json (~> 1.3.7)
+    net-scp (1.1.0)
+      net-ssh (>= 2.6.5)
     net-ssh (2.6.7)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
@@ -208,6 +224,8 @@ GEM
     rb-fsevent (0.9.3)
     rdoc (3.12.2)
       json (~> 1.4)
+    remotipart (1.0.5)
+    rmagick (2.13.2)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -223,6 +241,7 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
+    ruby-hmac (0.4.0)
     sass (3.2.7)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -275,10 +294,12 @@ DEPENDENCIES
   binding_of_caller
   bundler
   capybara
+  carrierwave
   coffee-rails
   coffee-rails-source-maps
   database_cleaner
   factory_girl_rails
+  fog
   foursquare2
   geocoder
   guard-rspec
@@ -304,6 +325,8 @@ DEPENDENCIES
   quimby
   rails (= 3.2.11)
   rb-fsevent
+  remotipart
+  rmagick
   rspec-rails
   sass-rails
   shoulda

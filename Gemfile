@@ -25,6 +25,10 @@ gem 'multi_json'
 gem 'simplecov'
 gem 'shoulda'
 gem 'foursquare2'
+gem 'carrierwave'
+gem 'fog'
+gem 'rmagick'
+gem 'remotipart'
 
 
 
