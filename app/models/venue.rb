@@ -22,7 +22,7 @@
 #
 
 class Venue < ActiveRecord::Base
-  attr_accessible :name, :address, :rating, :total_votes, :latitude, :longitude
+  attr_accessible :name, :address, :rating, :total_votes, :latitude, :longitude, :crossStreet
   has_many :photos
   belongs_to :location
 
@@ -34,7 +34,7 @@ class Venue < ActiveRecord::Base
     #still missing twitter, photo_url
   end
 
-  def add_twitter_photo
+  def add_twitter_photo(venue)
 
   end
 
