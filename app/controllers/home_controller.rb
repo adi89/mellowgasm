@@ -31,7 +31,6 @@ end
 # category_id = q["groups"].first["items"].first["categories"].first["id"]
 
 
-
 # https://api.foursquare.com/v2/venues/search?ll=40.7,-74&limit=200&offset=200?client_id=BA3SVMI1K40ZXF2GWCDEDK2QCTTN1QZB3TESSXVRGBM4E1OW&client_secret=FZNQMIZK1TK1XFOBP3LI4M43VV4HJ50WK4XWQBIZHSNQ34YU
 
 
@@ -41,3 +40,18 @@ end
 # "https://api.foursquare.com/v2/venues/4eefd4506d86d722df8fd52e/photos?client_id=BA3SVMI1K40ZXF2GWCDEDK2QCTTN1QZB3TESSXVRGBM4E1OW&client_secret=FZNQMIZK1TK1XFOBP3LI4M43VV4HJ50WK4XWQBIZHSNQ34YU"
 
 #picture= https://irs0.4sqi.net/img/user/100x100/blank_boy.png
+
+
+#so we have our models.
+
+#user provides his address => That becomes a location (with a latitude and longitude, and of course address)
+
+#Location feeds into the query. Motivation (which has categoryId) also feeds into the Query. that query gets the list of venues.
+  #what do we do with those venues? We get a list of 50 results or so. Does that mean we populate our database with 50 venues or so ? Or would that increase the loading time too much? If so, then we might wanna limit it to 15 venues to create that amount of objects around. Those objects are saved as venues.
+
+#These venues that are saved have addreses lat and lng. they aso have name.
+#venue goes into photos, and we get photos from that..
+
+
+
+

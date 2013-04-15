@@ -11,6 +11,7 @@
 #
 
 require 'spec_helper'
+require "mocha/setup"
 
 describe Photo do
   describe '.create' do

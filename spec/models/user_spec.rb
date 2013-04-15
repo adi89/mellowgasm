@@ -14,6 +14,7 @@
 #
 
 require 'spec_helper'
+require "mocha/setup"
 
 describe User do
   describe '.create' do

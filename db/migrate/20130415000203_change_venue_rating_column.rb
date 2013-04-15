@@ -5,3 +5,4 @@ class ChangeVenueRatingColumn < ActiveRecord::Migration
   end
 
 end
+
