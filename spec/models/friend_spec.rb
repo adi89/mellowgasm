@@ -11,6 +11,7 @@
 #
 
 require 'spec_helper'
+require "mocha/setup"
 
 describe Friend do
   describe '.create' do

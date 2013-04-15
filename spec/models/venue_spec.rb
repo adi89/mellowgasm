@@ -15,9 +15,14 @@
 #  motivation_id :integer
 #  latitude      :float
 #  longitude     :float
+#  twitter       :string(255)
+#  phone         :string(255)
+#  crossStreet   :text
+#  venue_Id      :integer
 #
 
 require 'spec_helper'
+require 'mocha/setup'
 
 describe Venue do
   describe '.create' do

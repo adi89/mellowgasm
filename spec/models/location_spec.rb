@@ -13,6 +13,7 @@
 
 
 require 'spec_helper'
+require "mocha/setup"
 
 describe Location do
   describe '.create' do
