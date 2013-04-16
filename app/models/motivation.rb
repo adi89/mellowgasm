@@ -3,16 +3,15 @@
 # Table name: motivations
 #
 #  id         :integer          not null, primary key
-#  type       :string(255)
+#  desire     :string(255)
 #  categoryId :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer
 #
 
 class Motivation < ActiveRecord::Base
-attr_accessible :type, :categoryId
-belongs_to :user
+attr_accessible :desire, :categoryId
+has_and_belongs_to_many :users
 has_many :venues
 
 

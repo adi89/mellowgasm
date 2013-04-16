@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415135513) do
+ActiveRecord::Schema.define(:version => 20130416022936) do
 
   create_table "friends", :force => true do |t|
     t.string   "name"
@@ -31,11 +31,10 @@ ActiveRecord::Schema.define(:version => 20130415135513) do
   end
 
   create_table "motivations", :force => true do |t|
-    t.string   "type"
+    t.string   "desire"
     t.string   "categoryId"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "user_id"
   end
 
   create_table "photos", :force => true do |t|
@@ -57,23 +56,29 @@ ActiveRecord::Schema.define(:version => 20130415135513) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "users_motivations", :force => true do |t|
+    t.integer "user_id"
+    t.integer "motivation_id"
+  end
+
   create_table "venues", :force => true do |t|
     t.string   "name"
     t.string   "address"
-    t.integer  "rating",        :default => 0
-    t.text     "venue_url"
-    t.text     "photo_url"
-    t.integer  "total_votes",   :default => 0
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.integer  "rating",                    :default => 0
+    t.integer  "total_votes",               :default => 0
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.integer  "location_id"
     t.integer  "motivation_id"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "twitter"
+    t.string   "twitter",                   :default => ""
     t.string   "phone"
     t.text     "crossStreet"
-    t.integer  "venue_Id"
+    t.string   "foursquare_identification"
+    t.string   "venue_url",                 :default => ""
+    t.integer  "distance"
+    t.decimal  "ratio",                     :default => 0.0
   end
 
 end
