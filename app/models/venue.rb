@@ -31,7 +31,7 @@ class Venue < ActiveRecord::Base
 
   def self.make_venues(location, motivation)
     client = Foursquare2::Client.new(:client_id => ENV["F4_CLIENT"], :client_secret => ENV["F4_CLIENT_SECRET"])
-    q = client.search_venues(options = {:ll => "#{location.latitude}, #{location.longitude}", :limit => 50, :intent => 'browse', :radius => 2000, :categoryId => motivation.categoryId})
+    q = client.search_venues(options = {:ll => "#{location.latitude}, #{location.longitude}", :limit => 50, :intent => 'browse', :radius => 1000, :categoryId => motivation.categoryId})
     q["groups"].first["items"].each do |i|
       Venue.create(foursquare_identification: i["id"], phone: i["contact"]["phone"], address: i["location"]["address"], crossStreet: i["location"]["crossStreet"], name: i["name"], latitude: i["location"]["lat"], longitude: i["location"]["lng"], :twitter => i["contact"]["twitter"], :distance => i["location"]["distance"])
     end
@@ -39,7 +39,6 @@ class Venue < ActiveRecord::Base
 
   def ratio
     a = HTTParty.get("https://api.foursquare.com/v2/venues/#{self.foursquare_identification}/photos?client_id=#{ENV["F4_CLIENT"]}&client_secret=#{ENV["F4_CLIENT_SECRET"]}")
-
     users = a["response"]["photos"]["groups"].second["items"].map{|i| i["user"]["gender"]}
     guy = users.count("male").to_f
     girl = users.count("female").to_f
