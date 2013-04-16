@@ -54,4 +54,5 @@ end
 
 
 
+# "https://api.foursquare.com/v2/venues/#{a}/photos?client_id=BA3SVMI1K40ZXF2GWCDEDK2QCTTN1QZB3TESSXVRGBM4E1OW&client_secret=FZNQMIZK1TK1XFOBP3LI4M43VV4HJ50WK4XWQBIZHSNQ34YU"
 

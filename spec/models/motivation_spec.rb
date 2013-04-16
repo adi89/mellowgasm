@@ -3,11 +3,10 @@
 # Table name: motivations
 #
 #  id         :integer          not null, primary key
-#  type       :string(255)
+#  desire     :string(255)
 #  categoryId :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer
 #
 
 require 'spec_helper'
