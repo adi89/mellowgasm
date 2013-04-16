@@ -1,9 +1,17 @@
 class HomeController < ApplicationController
   def index
-    # access_token = 4LHKYT3P4GINK5FYWSOLXPIZSKLBZ3NV2IWCWJC5W2VTXCCF
+
   end
 
 
+
+
+
+end
+
+
+
+    # access_token = 4LHKYT3P4GINK5FYWSOLXPIZSKLBZ3NV2IWCWJC5W2VTXCCF
 
   #foursquare.venues.search(:ll => "40.714353,-74.005973")
 
@@ -11,7 +19,6 @@ class HomeController < ApplicationController
   #4bf58dd8d48988d116941735 bars
   #4bf58dd8d48988d11f941735 nightclub
 
-end
 
 
 # nightlife = ["4d4b7105d754a06376d81259",

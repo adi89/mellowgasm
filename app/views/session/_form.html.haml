@@ -1,0 +1,9 @@
+= form_tag '/login', :remote => true do
+  = label_tag :email
+  = text_field_tag :email, nil, :autofocus => true
+  = label_tag :password
+  = password_field_tag :password
+  = link_to('Cancel', '#', :'data-clear-form' => true, :class => 'button radius tiny alert')
+  = submit_tag 'Enter', :class => 'button tiny radius info'
+
+

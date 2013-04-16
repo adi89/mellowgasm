@@ -1,0 +1,18 @@
+= form_for @user, :html => {:multipart => true}, :remote => true do |f|
+  = f.label :name
+  = f.text_field :name, :autofocus => true
+  = f.label :email
+  = f.text_field :email
+  = f.label :password
+  = f.password_field :password
+  = f.label :password_confirmation
+  = f.password_field :password_confirmation
+  = f.label :gender
+  = f.text_field :gender
+  = f.label :address
+  = f.text_field :address
+  = f.label :phone
+  = f.text_field :phone
+  = link_to('Cancel', '#', :'data-clear-form' => true, :class => 'button small radius alert')
+  = f.submit 'Create Account', :class => 'button radius small info'
+
