@@ -19,6 +19,7 @@ Motivation.create(:desire => 'The Club Scene', :categoryId => '4bf58dd8d48988d11
 
 Venue.make_venues(Location.first, Motivation.first)
 
+
 Venue.all.each do |venue|
   Photo.photo_create(venue)
 end
