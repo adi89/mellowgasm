@@ -1,7 +1,11 @@
-%script
+/ %h3#header_cruise Cruise
+= text_field_tag :searchinterview, nil, :autofocus => true
+= link_to('Cruise Joints', '#', :class => 'test_btn')
+/ if @auth.present?
+
 .row
   .large-4.columns
-    %h2 Map
+    %h3#header_cruise Map
     #map_canvas
       %script
         display_map(40.69, -73.95, 13);
@@ -27,15 +31,14 @@
         var heatmap = new google.maps.visualization.HeatmapLayer({data: heatMapData});
         heatmap.setMap(map);
       %script
-        add_marker(40.69, -73.95, 'yo')
+        add_marker(40.69, -73.95, 'yo');
       #markers
-      - for @locations.each do |l|
-        %script
-          ="add_marker(#{l.latitude}, #{l.longitude})"
-  .row
+        - @venues.each do |v|
+          %script
+            = "add_marker(#{v.latitude}, #{v.longitude});"
+
+.row
   .large-12.columns
     .table
       .tr
-        .td up for anything // bars // dive bars // gay bars // lounges // nightclubs
-
-
+      .td up for anything // bars // dive bars // gay bars // lounges // nightclubs
