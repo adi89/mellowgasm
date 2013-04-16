@@ -1,0 +1,12 @@
+<% if @auth.present? %>
+$('#reg_form').append('<h4>You are logged in</h4>');
+$('#reg_form h4').fadeOut(2000, function(){ $('#reg_form').remove(); });
+
+$('#nav').empty();
+$('#nav').append('<%=j render :partial => 'layouts/nav' %>');
+document.location.href = '/';
+<% else %>
+$('#reg_form').effect("bounce", 300)
+<% end %>
+
+

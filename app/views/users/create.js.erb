@@ -1,0 +1,11 @@
+<% if @user.valid? %>
+  $('#reg_form').hide().append('<h5>Congrats! You are now a member. Have a nice day. </h4>').slideDown('slow');
+$('#reg_form h5').fadeOut(2000, function(){ $('#reg_form').remove(); });
+  $('#nav').empty()
+    $('#nav').append('<%=j render :partial => 'layouts/nav' %>')
+
+<% else %>
+  $('#reg_form').effect("bounce", 300);
+<% end %>
+
+document.location.href = '/';

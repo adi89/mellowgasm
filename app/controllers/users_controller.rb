@@ -1,7 +1,19 @@
 class UsersController < ApplicationController
-  def index
+  before_filter :only_authenticated_users, only: [:show]
+
+  def show
+    @auth
+#     binding.pry
+# @lat = request.location.latitude
+# @long = request.location.longitude
   end
 
+  def new
+    @user = User.new
+  end
 
+  def create
+    @user = User.create(params[:user])
+  end
 
 end
