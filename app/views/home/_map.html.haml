@@ -1,0 +1,7 @@
+%script
+  = "display_map(#{@location.latitude}, #{@location.longitude}, 13);"
+%script
+  #markers
+    - @venues.each do |v|
+      %script
+        = "add_marker(#{v.latitude}, #{v.longitude});"

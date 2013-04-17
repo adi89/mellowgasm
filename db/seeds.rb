@@ -10,6 +10,7 @@ Location.create(:address => '575 Grand Street NYC')
 Location.create(:address => '10 East 21st Street NYC')
 
 
+
 Motivation.create(:desire => 'All Nightlife', :categoryId => '4d4b7105d754a06376d81259')
 Motivation.create(:desire => 'All Bars', :categoryId => '4bf58dd8d48988d116941735')
 Motivation.create(:desire => 'Dive Bars', :categoryId => '4bf58dd8d48988d118941735')

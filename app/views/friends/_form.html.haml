@@ -1,0 +1,7 @@
+= form_for @friend, :remote => true do |f|
+  = f.label :name
+  = f.text_field :name, :autofocus => true
+  = f.label :phone
+  = f.text_field :phone
+  = link_to('Cancel', '#', :'data-clear-form' => true, :class => 'test_btn')
+  = f.submit nil, :class => 'test_btn'

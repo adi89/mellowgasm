@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
-  <title>Interviewer</title>
+  <title>Mellowgasm</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE']}&libraries=visualization&sensor=false" %>
@@ -16,7 +16,6 @@
   <%= render :partial => 'layouts/nav' %>
   <%= render :partial => 'layouts/body' %>
   <%= render :partial => 'layouts/footer' %>
-  <%= yield %>
   <script>
   $(document).foundation();
 </body>

@@ -14,7 +14,6 @@ class Photo < ActiveRecord::Base
   attr_accessible :gender, :url
   belongs_to :venue
 
-
   def self.photo_create(venue)
     c= []
     a = HTTParty.get("https://api.foursquare.com/v2/venues/#{venue.foursquare_identification}/photos?client_id=#{ENV["F4_CLIENT"]}&client_secret=#{ENV["F4_CLIENT_SECRET"]}")

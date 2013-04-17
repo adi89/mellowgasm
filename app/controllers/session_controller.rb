@@ -7,11 +7,11 @@ class SessionController < ApplicationController
     user = User.where(:email => params[:email]).first
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
-
+      authenticate
+      redirect_to(home_path)
     else
       session[:user_id] = nil
     end
-      authenticate
   end
 
   def destroy

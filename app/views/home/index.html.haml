@@ -1,43 +1,30 @@
-%script
+= form_tag '/new_map', :remote => true do
+  = text_field_tag ":serchmap", nil, :autofocus => true
+  = submit_tag 'Cruise Joints', :class => 'test_btn'
+
+
+
 .row
   .large-4.columns
-    %h2 Map
-    #map_canvas
-      %script
-        display_map(40.69, -73.95, 13);
-      %script
-        var heatMapData = [
-        {location: new google.maps.LatLng(40.69, -73.95), weight: 10},
-        {location: new google.maps.LatLng(40.69, -73.95002), weight: 7},
-        {location: new google.maps.LatLng(40.69, -73.95004), weight: 4},
-        {location: new google.maps.LatLng(40.69, -73.95006), weight: 1},
-        / new google.maps.LatLng(40.69, -73.95),
-        / {location: new google.maps.LatLng(40.69, -73.950002), weight: 10},
-        / {location: new google.maps.LatLng(40.69, -73.953), weight: 10},
-        {location: new google.maps.LatLng(37.782, -122.439), weight: 2},
-        new google.maps.LatLng(37.782, -122.437),
-        {location: new google.maps.LatLng(37.782, -122.435), weight: 0.5},
-        {location: new google.maps.LatLng(37.785, -122.447), weight: 3},
-        {location: new google.maps.LatLng(37.785, -122.445), weight: 2},
-        new google.maps.LatLng(37.785, -122.443),
-        {location: new google.maps.LatLng(37.785, -122.441), weight: 0.5},
-        new google.maps.LatLng(37.785, -122.439),
-        {location: new google.maps.LatLng(37.785, -122.437), weight: 2},
-        {location: new google.maps.LatLng(37.785, -122.435), weight: 3}];
-        var heatmap = new google.maps.visualization.HeatmapLayer({data: heatMapData});
-        heatmap.setMap(map);
-      %script
-        add_marker(40.69, -73.95, 'yo');
-      #markers
-      - @venues.each do |v|
-        %script
-          = "add_marker(#{v.latitude}, #{v.longitude});"
-
-
+    %h3#header_cruise Map
+    #map_daddy
+      #map_canvas
+        = render 'map'
 .row
-  .large-12.columns
+  .large-4.columns
     .table
       .tr
-        .td up for anything // bars // dive bars // gay bars // lounges // nightclubs
-
-
+      .td up for anything // bars // dive bars // gay bars // lounges // nightclubs
+.row
+  .five.columns
+    %h3#header_cruise New Friend
+    #friend_form
+      = render 'friends/form'
+.row
+  .seven.columns
+    #friends
+      %table
+      - @friends.each do |f|
+        %tr
+          %td= f.name
+          %td= f.phone

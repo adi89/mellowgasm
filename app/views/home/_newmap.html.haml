@@ -1,0 +1,37 @@
+%script
+  display_map(40.69, -73.95, 13);
+%script
+  var heatMapData = [
+  {location: new google.maps.LatLng(40.69, -73.95), weight: 10},
+  {location: new google.maps.LatLng(40.69, -73.95002), weight: 7},
+  {location: new google.maps.LatLng(40.69, -73.95004), weight: 4},
+  {location: new google.maps.LatLng(40.69, -73.95006), weight: 1},
+  / new google.maps.LatLng(40.69, -73.95),
+  / {location: new google.maps.LatLng(40.69, -73.950002), weight: 10},
+  / {location: new google.maps.LatLng(40.69, -73.953), weight: 10},
+  {location: new google.maps.LatLng(37.782, -122.439), weight: 2},
+  new google.maps.LatLng(37.782, -122.437),
+  {location: new google.maps.LatLng(37.782, -122.435), weight: 0.5},
+  {location: new google.maps.LatLng(37.785, -122.447), weight: 3},
+  {location: new google.maps.LatLng(37.785, -122.445), weight: 2},
+  new google.maps.LatLng(37.785, -122.443),
+  {location: new google.maps.LatLng(37.785, -122.441), weight: 0.5},
+  new google.maps.LatLng(37.785, -122.439),
+  {location: new google.maps.LatLng(37.785, -122.437), weight: 2},
+  {location: new google.maps.LatLng(37.785, -122.435), weight: 3}];
+  var heatmap = new google.maps.visualization.HeatmapLayer({data: heatMapData});
+  heatmap.setMap(map);
+%script
+  add_marker(40.69, -73.95, 'yo');
+  #markers
+    - @venues.each do |v|
+      %script
+        = "add_marker(#{v.latitude}, #{v.longitude});"
+
+%script
+  = "display_map(#{ @location.latitude}, #{@location.longitude}, 13);"
+%script
+  #markers
+    - @venues.each do |v|
+      %script
+        = "add_marker(#{v.latitude}, #{v.longitude});"
