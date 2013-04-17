@@ -12,18 +12,20 @@ function display_map(lat, lng, zoom)
   map = new google.maps.Map(canvas, mapOptions);
 }
 
-function add_marker(lat, lng, title, bullshit)
+function add_marker(lat, lng, title, bullshit, venue, distance, address, ven_address, ven_crossStreet)
 {
+  var stuff = "<div class='newmarker'><a href='venues/" + bullshit + "' data-reveal-id = 'venue_show' data-remote = 'true'>"+venue+"</a></div>" + "<p>" +ven_address+ " Cross Street - "+ven_crossStreet+".</p>"+ "<p>Distance from " +address+ " is "+distance+" meters.</p>"
+
   var latlng = new google.maps.LatLng(lat, lng, title);
   var marker = new google.maps.Marker({position: latlng, map: map, title: title});
-  infowindow = new google.maps.InfoWindow({content: bullshit });
+  var infowindow = new google.maps.InfoWindow({
+    content: stuff  } );
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.open(map,marker);
   });
 
 
 }
-
 // var heatMapData = [
 //   {location: new google.maps.LatLng(37.782, -122.447), weight: 0.5},
 //   new google.maps.LatLng(37.782, -122.445),

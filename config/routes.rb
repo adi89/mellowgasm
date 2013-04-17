@@ -10,4 +10,6 @@ Mellowgasm::Application.routes.draw do
   get '/home' => 'home#index'
 
   post '/new_map' => 'home#new_map'
+
+  get 'venues/:id' => 'venues#ven_show'
 end

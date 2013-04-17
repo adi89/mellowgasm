@@ -6,7 +6,7 @@
   = submit_tag 'Cruise Joints', :class => 'test_btn'
 .row
   .large-4.columns
-    %h3#header_cruise Map
+    %h3#header_cruise
     #map_daddy
       #map_canvas
         = render 'map'
@@ -14,7 +14,7 @@
   .large-4.columns
     .table
       .tr
-      .td up for anything // bars // dive bars // gay bars // lounges // nightclubs
+      .td
 .row
   .five.columns
     %h3#header_cruise New Friend
@@ -28,3 +28,7 @@
         %tr
           %td= f.name
           %td= f.phone
+#venue_show.reveal-modal
+  #TheLowDown
+
+  %a.close-reveal-modal.fuck x

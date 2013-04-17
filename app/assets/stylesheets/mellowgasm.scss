@@ -156,6 +156,11 @@ height: 30px;
 font-family: 'Vollkorn', serif;
 }
 
+a
+{
+  font-family: 'Vollkorn', serif !important;
+}
+
 .panel
 {
   padding: 0px;
@@ -186,7 +191,7 @@ margin: 10px;}
   color: white;
 //   background: #f8d9f9;
 //   color: black;
-  font-family: 'Vollkorn', serif;
+  font-family: 'Vollkorn', serif !important;
   border-radius: 0px;
   // height: 60px !important;
   padding: 10px;
@@ -219,7 +224,7 @@ margin: 10px;}
   text-align: center;
 }
 
-#email, #password, #friend_name, #friend_phone, #question_question, #question_category, #user_phone, #interview_name, #user_name, #user_email, #user_address, #user_password, #user_password_confirmation, #interview_cost, #interview_threshold, #tags, #searchinterview, #serchmap
+#email, #password, #friend_name, #friend_phone, #question_question, #question_category, #user_phone, #interview_name, #user_name, #user_email, #user_address, #user_password, #user_password_confirmation, #interview_cost, #interview_threshold, #tags, #searchinterview, #serchmap, #user_gender
 {
   width: 500px;
   background: transparent;
@@ -284,12 +289,13 @@ input
 
 #styled_select{
    width: 240px;
-   // height: 50px;
+   height: 37px;
    overflow: hidden;
    background: url('http://i.imgur.com/upBGh5w.gif') no-repeat right #000044;
    border: 0px solid #ccc;
    border-radius: 0px;
    float: left;
+   margin-right: 5px;
 
    }
 
@@ -311,8 +317,27 @@ input
 
 #submit_button
 {
-float: left;
+// float: left;
 }
+
+.landingmessage
+{
+     font-family: 'Vollkorn', serif;
+     font-size: 80px;
+     color: #000044;
+     line-height: 1.4;
+     max-width: 800px;
+}
+
+.landingmessagelogin
+{
+     font-family: 'Vollkorn', serif;
+     font-size: 80px;
+     color: #000077;
+     line-height: 1.4;
+     max-width: 800px;
+}
+
 
 #map-tooltip { width: 200px; height: 100px; color: white; padding: 20px; }
 // Now let's add some CSS3 styles
@@ -322,3 +347,7 @@ float: left;
 #map-tooltip { box-shadow:rgba(0,0,0,0.9) 0 0 10px; -webkit-box-shadow:rgba(0,0,0,0.9) 0 0 10px; -moz-box-shadow:rgba(0,0,0,0.9) 0 0 10px; }
 // Transparent background
 #map-tooltip { background: rgba(10, 10, 10, 0.6); }
+
+h2.title{
+  color:black;
+}
