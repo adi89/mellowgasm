@@ -26,15 +26,21 @@ class Venue < ActiveRecord::Base
   attr_accessible :name, :address, :rating, :total_votes, :latitude, :longitude, :crossStreet, :foursquare_identification, :phone, :distance, :twitter
   has_many :photos
   belongs_to :location
-  validates :foursquare_identification, :uniqueness => true
+  # validates :foursquare_identification, :uniqueness => true
   after_save :ratio
+  # after_save :rate
 
   def self.make_venues(location, motivation)
     client = Foursquare2::Client.new(:client_id => ENV["F4_CLIENT"], :client_secret => ENV["F4_CLIENT_SECRET"])
     q = client.search_venues(options = {:ll => "#{location.latitude}, #{location.longitude}", :limit => 50, :intent => 'browse', :radius => 1000, :categoryId => motivation.categoryId})
     q["groups"].first["items"].each do |i|
-      Venue.create(foursquare_identification: i["id"], phone: i["contact"]["phone"], address: i["location"]["address"], crossStreet: i["location"]["crossStreet"], name: i["name"], latitude: i["location"]["lat"], longitude: i["location"]["lng"], :twitter => i["contact"]["twitter"], :distance => i["location"]["distance"])
-    end
+
+    a=  Venue.create(foursquare_identification: i["id"], phone: i["contact"]["phone"], address: i["location"]["address"], crossStreet: i["location"]["crossStreet"], name: i["name"], latitude: i["location"]["lat"], longitude: i["location"]["lng"], :twitter => i["contact"]["twitter"], :distance => i["location"]["distance"])
+      location.venues << a
+      motivation.venues << a
+      # location.venues << venue
+      # motivation.venues << venue
+     end
   end
 
   def ratio
@@ -50,8 +56,14 @@ class Venue < ActiveRecord::Base
     #gives the 10 venues with the highest ratios.
   end
 
-  def rating
-
+  def rate
+    ratio = (self.ratio/0.70)
+    client = Foursquare2::Client.new(:client_id => ENV["F4_CLIENT"], :client_secret => ENV["F4_CLIENT_SECRET"])
+    a = client.venue(self.foursquare_identification)
+    checkins = (a["stats"]["checkinsCount"].to_f)/30000.00
+    foursqRating = (a["rating"].to_f/10.00)
+    self.rating = ((foursqRating * 0.40) + (checkins * 0.25) + (ratio * 0.35)).round(2)
+    self.save
   end
 
 end
