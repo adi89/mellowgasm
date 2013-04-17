@@ -36,8 +36,8 @@ class Venue < ActiveRecord::Base
     q["groups"].first["items"].each do |i|
 
     a=  Venue.create(foursquare_identification: i["id"], phone: i["contact"]["phone"], address: i["location"]["address"], crossStreet: i["location"]["crossStreet"], name: i["name"], latitude: i["location"]["lat"], longitude: i["location"]["lng"], :twitter => i["contact"]["twitter"], :distance => i["location"]["distance"])
-      location << a
-      motivation << a
+      location.venues << a
+      motivation.venues << a
       # location.venues << venue
       # motivation.venues << venue
      end
