@@ -4,4 +4,4 @@
   #markers
     - @venues.each do |v|
       %script
-        = "add_marker(#{v.latitude}, #{v.longitude});"
+        = "add_marker(#{v.latitude}, #{v.longitude}, 'Title', '#{link_to("#{v.name}", home_path)}');"

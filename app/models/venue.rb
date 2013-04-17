@@ -27,8 +27,19 @@ class Venue < ActiveRecord::Base
   has_many :photos
   belongs_to :location
   # validates :foursquare_identification, :uniqueness => true
-  after_save :ratio
+  # after_save :ratio
   # after_save :rate
+
+  def self.ratio(venue)
+    b = HTTParty.get("https://api.foursquare.com/v2/venues/#{venue.foursquare_identification}/photos?client_id=#{ENV["F4_CLIENT"]}&client_secret=#{ENV["F4_CLIENT_SECRET"]}")
+    if b["response"]["photos"]["groups"].first["items"].present?
+      users = b["response"]["photos"]["groups"].second["items"].map{|i| i["user"]["gender"]}
+      guy = users.count("male").to_f
+      girl = users.count("female").to_f
+      venue.ratio = (girl/(girl + guy)).round(2)
+    end
+  end
+
 
   def self.make_venues(location, motivation)
     client = Foursquare2::Client.new(:client_id => ENV["F4_CLIENT"], :client_secret => ENV["F4_CLIENT_SECRET"])
@@ -38,18 +49,12 @@ class Venue < ActiveRecord::Base
     a=  Venue.create(foursquare_identification: i["id"], phone: i["contact"]["phone"], address: i["location"]["address"], crossStreet: i["location"]["crossStreet"], name: i["name"], latitude: i["location"]["lat"], longitude: i["location"]["lng"], :twitter => i["contact"]["twitter"], :distance => i["location"]["distance"])
       location.venues << a
       motivation.venues << a
+      Venue.ratio(a)
       # location.venues << venue
       # motivation.venues << venue
      end
   end
 
-  def ratio
-    a = HTTParty.get("https://api.foursquare.com/v2/venues/#{self.foursquare_identification}/photos?client_id=#{ENV["F4_CLIENT"]}&client_secret=#{ENV["F4_CLIENT_SECRET"]}")
-    users = a["response"]["photos"]["groups"].second["items"].map{|i| i["user"]["gender"]}
-    guy = users.count("male").to_f
-    girl = users.count("female").to_f
-    self.ratio = (girl/(girl + guy)).round(2)
-  end
 
   def self.top_picks
     Venue.all.sort_by(&:ratio).map{|i| [i.name, i.ratio]}.last(10)

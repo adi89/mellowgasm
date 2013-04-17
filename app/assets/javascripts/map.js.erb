@@ -12,14 +12,15 @@ function display_map(lat, lng, zoom)
   map = new google.maps.Map(canvas, mapOptions);
 }
 
-function add_marker(lat, lng, title)
+function add_marker(lat, lng, title, bullshit)
 {
   var latlng = new google.maps.LatLng(lat, lng, title);
   var marker = new google.maps.Marker({position: latlng, map: map, title: title});
-  infowindow = new google.maps.InfoWindow();
+  infowindow = new google.maps.InfoWindow({content: bullshit });
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.open(map,marker);
   });
+
 
 }
 

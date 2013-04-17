@@ -180,13 +180,17 @@ background: #e3fcf3;
 border-radius: 10px;
 margin: 10px;}
 
-.test_btn, .button, .tiny, .success
+.test_btn, .button, .tiny, .success, a .test_btn
 {
-  background: #f8d9f9;
-  color: black;
+  background: #000044;
+  color: white;
+//   background: #f8d9f9;
+//   color: black;
+  font-family: 'Vollkorn', serif;
+  border-radius: 0px;
+  // height: 60px !important;
   padding: 10px;
-  border-radius: 5px;
-  height: 40px;
+  margin-right: 5px;
 }
 
 .submitAnswer
@@ -215,7 +219,7 @@ margin: 10px;}
   text-align: center;
 }
 
-#email, #password, #friend_name, #friend_phone, #question_question, #question_category, #user_phone, #interview_name, #user_name, #user_email, #user_address, #user_password, #user_password_confirmation, #interview_cost, #interview_threshold, #tags, #searchinterview
+#email, #password, #friend_name, #friend_phone, #question_question, #question_category, #user_phone, #interview_name, #user_name, #user_email, #user_address, #user_password, #user_password_confirmation, #interview_cost, #interview_threshold, #tags, #searchinterview, #serchmap
 {
   width: 500px;
   background: transparent;
@@ -278,7 +282,37 @@ input
   font-size: 20px;
 }
 
+#styled_select{
+   width: 240px;
+   // height: 50px;
+   overflow: hidden;
+   background: url('http://i.imgur.com/upBGh5w.gif') no-repeat right #000044;
+   border: 0px solid #ccc;
+   border-radius: 0px;
+   float: left;
 
+   }
+
+#motivations_name
+{
+   background: transparent;
+   font-family: 'Vollkorn', serif;
+   letter-spacing:2px;
+   color: white;
+   width: 268px;
+   padding: 10px;
+   font-size: 12px;
+   // line-height: 1;
+   border: 0;
+   border-radius: 0px;
+   height: 34px;
+   -webkit-appearance: none;
+}
+
+#submit_button
+{
+float: left;
+}
 
 #map-tooltip { width: 200px; height: 100px; color: white; padding: 20px; }
 // Now let's add some CSS3 styles
