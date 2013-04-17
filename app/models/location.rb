@@ -28,3 +28,5 @@ def latlng
 #we save the searches in the database.
 
 end
+
+
