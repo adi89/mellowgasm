@@ -11,7 +11,7 @@ class HomeController < ApplicationController
   def new_map
 
     @motivation = Motivation.where(:desire => params["motivations"]["name"]).first
-    binding.pry
+
     @location = Location.find_or_create_by_address(params[':serchmap'])
     if !@auth.locations.include? @location
       @auth.locations << @location
