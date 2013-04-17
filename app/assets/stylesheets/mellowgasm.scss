@@ -277,3 +277,14 @@ input
 {
   font-size: 20px;
 }
+
+
+
+#map-tooltip { width: 200px; height: 100px; color: white; padding: 20px; }
+// Now let's add some CSS3 styles
+// Rounded corners
+#map-tooltip, .button { -moz-border-radius:5px; -webkit-border-radius:5px; }
+// Drop shadow
+#map-tooltip { box-shadow:rgba(0,0,0,0.9) 0 0 10px; -webkit-box-shadow:rgba(0,0,0,0.9) 0 0 10px; -moz-box-shadow:rgba(0,0,0,0.9) 0 0 10px; }
+// Transparent background
+#map-tooltip { background: rgba(10, 10, 10, 0.6); }

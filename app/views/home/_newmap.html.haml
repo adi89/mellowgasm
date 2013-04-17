@@ -1,5 +1,5 @@
 %script
-  display_map(40.69, -73.95, 13);
+  = "display_map(#{ @location.latitude}, #{@location.longitude}, 13);"
 %script
   var heatMapData = [
   {location: new google.maps.LatLng(40.69, -73.95), weight: 10},
@@ -23,14 +23,6 @@
   heatmap.setMap(map);
 %script
   add_marker(40.69, -73.95, 'yo');
-  #markers
-    - @venues.each do |v|
-      %script
-        = "add_marker(#{v.latitude}, #{v.longitude});"
-
-%script
-  = "display_map(#{ @location.latitude}, #{@location.longitude}, 13);"
-%script
   #markers
     - @venues.each do |v|
       %script
