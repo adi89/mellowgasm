@@ -1,9 +1,10 @@
 class HomeController < ApplicationController
   def index
-    @venues = Venue.all
+
     @friend = Friend.new
     @friends = Friend.all
-    @location = @auth.locations.where(address: @auth.address).first
+    @location = @auth.locations.first
+    @venues = @location.venues
     # @venues = @location.venues
   end
 
@@ -15,11 +16,12 @@ class HomeController < ApplicationController
     if !@auth.locations.include? @location
       @auth.locations << @location
     end
-    if !@location.venues.present?
+    if !@location.venues.where(:motivation_id => @motivation.id).present?
         Venue.make_venues(@location, @motivation)
       end
-      binding.pry
-      @venues = @location.venues
+
+      @venues = @location.venues.where(:motivation_id => @motivation.id)
+
   end
 end
 
