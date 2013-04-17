@@ -215,7 +215,7 @@ margin: 10px;}
   text-align: center;
 }
 
-#email, #password, #question_question, #question_category, #user_phone, #interview_name, #user_name, #user_email, #user_address, #user_password, #user_password_confirmation, #interview_cost, #interview_threshold, #tags, #searchinterview
+#email, #password, #friend_name, #friend_phone, #question_question, #question_category, #user_phone, #interview_name, #user_name, #user_email, #user_address, #user_password, #user_password_confirmation, #interview_cost, #interview_threshold, #tags, #searchinterview
 {
   width: 500px;
   background: transparent;
@@ -266,4 +266,14 @@ font-family: 'Vollkorn', serif;
 #header_cruise
 {
   color: black;
+}
+
+input
+{
+  border: 0px;
+}
+
+#number
+{
+  font-size: 20px;
 }

@@ -14,6 +14,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(params[:user])
+    @user.locations << Location.create(address: @user.address)
+
   end
 
 end

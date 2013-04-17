@@ -1,11 +1,21 @@
 class HomeController < ApplicationController
   def index
     @venues = Venue.all
+    @friend = Friend.new
+    @friends = Friend.all
+    @location = @auth.locations.where(address: @auth.address).first
   end
 
+  def new_map
+    @location = Location.find_or_create_by_address(params[':serchmap'])
+    if !@auth.locations.include? @location
+      @auth.locations << @location
+     @location << Venue.make_venues(@location,Motivation.first)
+binding.pry
+    end
 
 
-
+  end
 
 end
 

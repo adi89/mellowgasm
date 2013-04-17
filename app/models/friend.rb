@@ -13,9 +13,4 @@
 class Friend < ActiveRecord::Base
 attr_accessible :name, :phone
 belongs_to :users
-
-
-
-
-
 end
