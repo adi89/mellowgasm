@@ -1,9 +1,7 @@
 = form_tag '/new_map', :remote => true do
   = text_field_tag ":serchmap", nil, :autofocus => true
+  = select(:motivations, :name, options_for_select([["All Nightlife"], ["All Bars"], ["Dive Bars"], ["Gay Bars"], ["Lounges"], ["The Club Scene"]]))
   = submit_tag 'Cruise Joints', :class => 'test_btn'
-
-
-
 .row
   .large-4.columns
     %h3#header_cruise Map

@@ -4,17 +4,23 @@ class HomeController < ApplicationController
     @friend = Friend.new
     @friends = Friend.all
     @location = @auth.locations.where(address: @auth.address).first
+    # @venues = @location.venues
   end
 
   def new_map
+
+    @motivation = Motivation.where(:desire => params["motivations"]["name"]).first
+    binding.pry
     @location = Location.find_or_create_by_address(params[':serchmap'])
     if !@auth.locations.include? @location
       @auth.locations << @location
-      Venue.make_venues(@location,Motivation.first)
     end
-    @venues = @location.venues
+    if !@location.venues.present?
+        Venue.make_venues(@location, @motivation)
+      end
+      binding.pry
+      @venues = @location.venues
   end
-
 end
 
 
