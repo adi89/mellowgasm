@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417015421) do
+ActiveRecord::Schema.define(:version => 20130418040513) do
 
   create_table "friends", :force => true do |t|
     t.string   "name"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20130417015421) do
     t.string   "venue_url",                 :default => ""
     t.integer  "distance"
     t.float    "ratio",                     :default => 0.0
+    t.float    "foursquare_rating",         :default => 0.0
   end
 
 end

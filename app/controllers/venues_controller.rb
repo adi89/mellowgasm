@@ -6,7 +6,7 @@ def ven_show
   if !@venue.photos.present?
     Photo.photo_create(@venue)
   end
-  binding.pry
+
   Venue.ratio(@venue)
 @photos = @venue.photos
 
