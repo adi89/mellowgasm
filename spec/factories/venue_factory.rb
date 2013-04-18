@@ -21,6 +21,7 @@
 #  distance                  :integer
 #  ratio                     :float            default(0.0)
 #  foursquare_rating         :float            default(0.0)
+#  checkins                  :float            default(0.0)
 #
 
 FactoryGirl.define do

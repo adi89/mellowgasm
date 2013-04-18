@@ -21,6 +21,7 @@
 #  distance                  :integer
 #  ratio                     :float            default(0.0)
 #  foursquare_rating         :float            default(0.0)
+#  checkins                  :float            default(0.0)
 #
 
 class Venue < ActiveRecord::Base
@@ -41,10 +42,12 @@ class Venue < ActiveRecord::Base
       girl = users.count("female").to_f
       venue.ratio = (girl/(girl + guy)).round(2)
       venue.foursquare_rating = b["rating"]/10.0
+      venue.checkins = (b["stats"]["checkinsCount"].to_f)/(28000.to_f)
       venue.save
       return true
     else
       venue.foursquare_rating = b["rating"]/10.0
+      venue.checkins = (b["stats"]["checkinsCount"].to_f)/(28000.to_f) if b["stats"].present?
       venue.save
       return false
     end
@@ -69,7 +72,7 @@ class Venue < ActiveRecord::Base
 
 
   def self.top_picks
-    Venue.all.sort_by{|i| (i.ratio + i.foursquare_rating)*0.5}.last(10).map{|i| i.name}.reverse
+    Venue.all.sort_by{|i| (0.35* i.ratio + 0.4 * i.foursquare_rating +  0.25 * i.checkins)}.last(10).map{|i| i.name}.reverse
 
     #top venues that the user has found.
     #gives the 10 venues with the highest ratios.
