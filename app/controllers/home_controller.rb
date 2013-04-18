@@ -12,14 +12,13 @@ class HomeController < ApplicationController
 
     @motivation = Motivation.where(:desire => params["motivations"]["name"]).first
 
-    @location = Location.find_or_create_by_address(params[':serchmap'])
+    @location = Location.find_or_create_by_address(params['serchmap'])
     if !@auth.locations.include? @location
       @auth.locations << @location
     end
     if !@location.venues.where(:motivation_id => @motivation.id).present?
         Venue.make_venues(@location, @motivation)
       end
-
       @venues = @location.venues.where(:motivation_id => @motivation.id)
 
   end

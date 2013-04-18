@@ -24,8 +24,12 @@ window.app =
     $('.top-bar-section').on('click', '.login', app.show_reg_form)
     $('.submitAnswer').click(app.submit)
     $('.passed').click(app.send_twilio)
-    $('a.close-reveal-modal').trigger('click');
+    $('a.close-reveal-modal').trigger('click')
     $('body').on('click', '.fuck', app.close_modal)
+    $('.landingmessage').hide()
+    $('.landingmessage').fadeIn(1000)
+    $('.landingmessagelogin').hide()
+    $('.landingmessagelogin').fadeIn(6000)
   token_generated: (e, token) ->
     e.preventDefault()
     $(this).siblings('form').append("<input type=hidden name=token value=#{token.id}>").submit()
@@ -44,7 +48,8 @@ window.app =
     $("#friend_form").show()
   close_modal: (e) ->
     e.preventDefault()
-    $('#venue_show').foundation('reveal', 'close');
+    $('#venue_show').foundation('reveal', 'close')
+    $('#TheLowDown').empty()
 $(document).ready(app.document_ready)
 
 
