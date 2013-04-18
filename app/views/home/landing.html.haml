@@ -1,9 +1,10 @@
 %br
 %br
-%br
-%br
+
 .landingmessage
-  <em>Mellowgasm</em> gives you crucial hints on where to find your playmate tonight, regardless of your taste.
+  <em>Mellowgasm</em> gives you crucial hints on where to find a bit of fun tonight, regardless of your tastes.
 .landingmessagelogin
-  ="Log in and chill." if !@auth.present?
+  / ="Log in up top." if !@auth.present?
+  =link_to("Log on in!", login_path, :remote => true, :id => 'login') if !@auth.present?
+  / =link_to("Scope it out >", home_path) if @auth.present?
   =link_to("Scope it out >", home_path) if @auth.present?
