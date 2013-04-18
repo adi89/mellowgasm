@@ -23,5 +23,6 @@ Venue.make_venues(Location.first, Motivation.first)
 
 Venue.all.each do |venue|
   Photo.photo_create(venue)
+  Venue.ratio(venue)
 end
 

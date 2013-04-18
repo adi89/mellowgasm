@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     @friends = Friend.all
     @location = @auth.locations.first
     @venues = @location.venues
+    @top_picks = Venue.top_picks
     # @venues = @location.venues
   end
 
@@ -20,7 +21,7 @@ class HomeController < ApplicationController
         Venue.make_venues(@location, @motivation)
       end
       @venues = @location.venues.where(:motivation_id => @motivation.id)
-
+      @top_picks = Venue.top_picks
   end
 end
 
