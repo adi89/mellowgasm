@@ -5,4 +5,5 @@
 .landingmessage
   <em>Mellowgasm</em> gives you crucial hints on where to find your playmate tonight, regardless of your taste.
 .landingmessagelogin
-  <em>Log in and chill.</em>
+  ="Log in and chill." if !@auth.present?
+  =link_to("Scope it out >", home_path) if @auth.present?

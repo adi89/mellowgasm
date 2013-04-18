@@ -138,7 +138,6 @@ h3, h4
   color: #fff;
   padding: 8px;
   // border-bottom: 3px solid white;
-  width: 338px;
 }
 
 .top-bar
@@ -196,6 +195,7 @@ margin: 10px;}
   // height: 60px !important;
   padding: 10px;
   margin-right: 5px;
+  height: 34px;
 }
 
 .submitAnswer
@@ -304,13 +304,14 @@ input
 {
    background: transparent;
    font-family: 'Vollkorn', serif;
-   letter-spacing:2px;
+   letter-spacing: 2px;
    color: white;
+   background: url('http://i.imgur.com/JE5Qehs.gif') no-repeat right #000044;
+   // background: #000044;
    width: 268px;
    padding: 10px;
    font-size: 12px;
    // line-height: 1;
-   border: 0;
    border-radius: 0px;
    height: 34px;
    -webkit-appearance: none;
@@ -337,6 +338,7 @@ input
      color: #000077;
      line-height: 1.4;
      max-width: 800px;
+     font-style: italic;
 }
 
 
@@ -370,11 +372,6 @@ input
   float: left;
 }
 
-#motivations_name
-{
-  border: 1px solid black;
-}
-
 h3#gender
 {
   font-family: 'Vollkorn', serif;
@@ -382,7 +379,7 @@ h3#gender
   color: #000044;
   background: transparent;
   clear: both;
-  padding-bottom: 25px;
+  // padding-bottom: 2px;
 }
 
 h3#rating
@@ -395,7 +392,7 @@ h3#rating
   padding-bottom: 20px;
 }
 
-h2.title, .fuck, .close-reveal-modal
+h3.title, h2.title
 {
   font-family: 'Vollkorn', serif;
   font-size: 30px;
@@ -417,4 +414,9 @@ div p
   font-family: 'Vollkorn', serif;
   font-size: 16px;
   color: #000044;
+}
+
+#venue_show
+{
+  width: 600px;
 }

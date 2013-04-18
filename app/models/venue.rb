@@ -35,7 +35,6 @@ class Venue < ActiveRecord::Base
     client = Foursquare2::Client.new(:client_id => ENV["F4_CLIENT"], :client_secret => ENV["F4_CLIENT_SECRET"])
     b = client.venue(venue.foursquare_identification)
 
-
     if b["photos"]["groups"].second["items"].present?
       users = b["photos"]["groups"].second["items"].map{|i| i["user"]["gender"]}
       guy = users.count("male").to_f
@@ -50,14 +49,6 @@ class Venue < ActiveRecord::Base
       return false
     end
   end
-
-def self.ratios(venues)
-    client = Foursquare2::Client.new(:client_id => ENV["F4_CLIENT"], :client_secret => ENV["F4_CLIENT_SECRET"])
-    a = client.venue(self.foursquare_identification)
-    a["rating"]
-
-end
-
 
 
   def self.make_venues(location, motivation)
@@ -78,7 +69,9 @@ end
 
 
   def self.top_picks
-    Venue.all.sort_by(&:ratio).map{|i| [i.name, i.ratio]}.last(10)
+    Venue.all.sort_by{|i| (i.ratio + i.foursquare_rating)*0.5}.last(10).map{|i| i.name}.reverse
+
+    #top venues that the user has found.
     #gives the 10 venues with the highest ratios.
   end
 

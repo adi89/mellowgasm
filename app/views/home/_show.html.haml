@@ -5,9 +5,9 @@
 %h6#sorry_sm{:style => 'clear:both;'}= "+1#{@venue.phone}" if @venue.phone.present?
 / %h5= link_to("Visit #{@venue.name}", url => "#{@venue.url}") if @venue.url.present?
 - if @venue.ratio > 0.0
-  %h3#gender{:style => 'clear:both;'}="Ratio = #{@venue.ratio * 100}% Girls and #{100 - (@venue.ratio * 100)}% Guys. #{@venue.name} also has a Foursquare rating of #{@venue.foursquare_rating.round(2)}."
+  %h3#gender{:style => 'clear:both;'}="Stats: #{@venue.ratio * 100}% Girls and #{100 - (@venue.ratio * 100)}% Guys, with a #{@venue.foursquare_rating.round(2)} Foursquare Rating."
 -else
-  %h3#rating{:style => 'clear:both;'}="#{@venue.foursquare_rating.round(2) * 100}% foursquare rating"
+  %h3#gender{:style => 'clear:both;'}="#{@venue.foursquare_rating.round(2) * 100}% foursquare rating"
 
 -if !@photos.present?
   %h5= "Sorry, foursquare hasn't supplied much info on #{@venue.name}. Why don't you go out there and find out ;)"
