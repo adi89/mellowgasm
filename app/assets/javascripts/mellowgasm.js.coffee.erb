@@ -48,7 +48,8 @@ window.app =
     $("#friend_form").show()
   close_modal: (e) ->
     e.preventDefault()
-    $('#venue_show').foundation('reveal', 'close');
+    $('#venue_show').foundation('reveal', 'close')
+    $('#TheLowDown').empty()
 $(document).ready(app.document_ready)
 
 

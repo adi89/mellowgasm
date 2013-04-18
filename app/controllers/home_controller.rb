@@ -19,7 +19,6 @@ class HomeController < ApplicationController
     if !@location.venues.where(:motivation_id => @motivation.id).present?
         Venue.make_venues(@location, @motivation)
       end
-
       @venues = @location.venues.where(:motivation_id => @motivation.id)
 
   end

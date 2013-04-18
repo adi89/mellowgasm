@@ -27,18 +27,21 @@ class Venue < ActiveRecord::Base
   has_many :photos
   belongs_to :location
   # validates :foursquare_identification, :uniqueness => true
-  after_save :ratio
+  # after_save :ratio
   # after_save :rate
 
   def self.ratio(venue)
     b = HTTParty.get("https://api.foursquare.com/v2/venues/#{venue.foursquare_identification}/photos?client_id=#{ENV["F4_CLIENT"]}&client_secret=#{ENV["F4_CLIENT_SECRET"]}")
-
-    if b["response"]["photos"]["groups"].first.present?
+      binding.pry
+    if b["response"]["photos"]["groups"].first["items"].present?
       users = b["response"]["photos"]["groups"].second["items"].map{|i| i["user"]["gender"]}
       guy = users.count("male").to_f
       girl = users.count("female").to_f
       venue.ratio = (girl/(girl + guy)).round(2)
       venue.save
+      return true
+    else
+      return false
     end
   end
 
@@ -53,7 +56,7 @@ class Venue < ActiveRecord::Base
       a.save
       location.venues << a
       motivation.venues << a
-      Venue.ratio(a)
+      # Venue.ratio(a)
       # location.venues << venue
       # motivation.venues << venue
      end
