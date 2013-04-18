@@ -274,7 +274,8 @@ font-family: 'Vollkorn', serif;
 
 #header_cruise
 {
-  color: black;
+  color: #000044;
+  font-family: 'Vollkorn', serif;
 }
 
 input
@@ -356,4 +357,22 @@ h2.title{
   width: 100px !important;
 }
 
+#sorry
+{
+  font-family: 'Vollkorn', serif;
+  font-size: 20px;
+  color: #000044;
+}
 
+#sorry_sm
+{
+  font-family: 'Vollkorn', serif;
+  font-size: 16px;
+  color: #000044;
+  float: left;
+}
+
+#motivations_name
+{
+  border: 1px solid black;
+}
