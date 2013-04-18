@@ -70,21 +70,24 @@ class Venue < ActiveRecord::Base
      end
   end
 
+def self.algorithm(ratio)
+  y = -4 * (ratio - 0.6)**2 + 1
+end
+
 
   def self.top_picks
-    Venue.all.sort_by{|i| (0.35* i.ratio + 0.4 * i.foursquare_rating +  0.25 * i.checkins)}.last(10).map{|i| i.name}.reverse
 
-    #top venues that the user has found.
-    #gives the 10 venues with the highest ratios.
+    Venue.all.sort_by{|i| (0.35* Venue.algorithm(i.ratio) + 0.4 * i.foursquare_rating +  0.25 * i.checkins)}.last(10).map{|i| i.name}.reverse.
   end
 
   def rate
     ratio = (self.ratio/0.70)
+    y =  -4 * (ratio - 0.6)**2 + 1
     client = Foursquare2::Client.new(:client_id => ENV["F4_CLIENT"], :client_secret => ENV["F4_CLIENT_SECRET"])
     a = client.venue(self.foursquare_identification)
     checkins = (a["stats"]["checkinsCount"].to_f)/30000.00
     foursqRating = (a["rating"].to_f/10.00)
-    self.rating = ((foursqRating * 0.40) + (checkins * 0.25) + (ratio * 0.35)).round(2)
+    self.rating = ((foursqRating * 0.40) + (checkins * 0.25) + (y * 0.35)).round(2)
     self.save
   end
 

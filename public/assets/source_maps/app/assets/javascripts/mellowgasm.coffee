@@ -24,7 +24,6 @@ window.app =
     $('.top-bar-section').on('click', '.login', app.show_reg_form)
     $('.submitAnswer').click(app.submit)
     $('.passed').click(app.send_twilio)
-    # $('a.close-reveal-modal').trigger('click')
     $('body').on('click', '.fuck', app.close_modal)
     $('.landingmessage').hide()
     $('.landingmessage').fadeIn(1000)
