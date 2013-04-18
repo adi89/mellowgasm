@@ -5,7 +5,7 @@
 #  id                        :integer          not null, primary key
 #  name                      :string(255)
 #  address                   :string(255)
-#  rating                    :integer          default(0)
+#  rating                    :float            default(0.0)
 #  total_votes               :integer          default(0)
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
@@ -19,7 +19,8 @@
 #  foursquare_identification :string(255)
 #  venue_url                 :string(255)      default("")
 #  distance                  :integer
-#  ratio                     :decimal(, )      default(0.0)
+#  ratio                     :float            default(0.0)
+#  foursquare_rating         :float            default(0.0)
 #
 
 class Venue < ActiveRecord::Base
@@ -31,19 +32,32 @@ class Venue < ActiveRecord::Base
   # after_save :rate
 
   def self.ratio(venue)
-    b = HTTParty.get("https://api.foursquare.com/v2/venues/#{venue.foursquare_identification}/photos?client_id=#{ENV["F4_CLIENT"]}&client_secret=#{ENV["F4_CLIENT_SECRET"]}")
-      binding.pry
-    if b["response"]["photos"]["groups"].first["items"].present?
-      users = b["response"]["photos"]["groups"].second["items"].map{|i| i["user"]["gender"]}
+    client = Foursquare2::Client.new(:client_id => ENV["F4_CLIENT"], :client_secret => ENV["F4_CLIENT_SECRET"])
+    b = client.venue(venue.foursquare_identification)
+
+
+    if b["photos"]["groups"].second["items"].present?
+      users = b["photos"]["groups"].second["items"].map{|i| i["user"]["gender"]}
       guy = users.count("male").to_f
       girl = users.count("female").to_f
       venue.ratio = (girl/(girl + guy)).round(2)
+      venue.foursquare_rating = b["rating"]/10.0
       venue.save
       return true
     else
+      venue.foursquare_rating = b["rating"]/10.0
+      venue.save
       return false
     end
   end
+
+def self.ratios(venues)
+    client = Foursquare2::Client.new(:client_id => ENV["F4_CLIENT"], :client_secret => ENV["F4_CLIENT_SECRET"])
+    a = client.venue(self.foursquare_identification)
+    a["rating"]
+
+end
+
 
 
   def self.make_venues(location, motivation)

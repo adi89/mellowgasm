@@ -137,7 +137,7 @@ h3, h4
   font-weight: 300;
   color: #fff;
   padding: 8px;
-  border-bottom: 3px solid white;
+  // border-bottom: 3px solid white;
   width: 338px;
 }
 
@@ -349,9 +349,7 @@ input
 // Transparent background
 #map-tooltip { background: rgba(10, 10, 10, 0.6); }
 
-h2.title{
-  color:black;
-}
+
 .image_person{
   float: left !important;
   width: 100px !important;
@@ -375,4 +373,48 @@ h2.title{
 #motivations_name
 {
   border: 1px solid black;
+}
+
+h3#gender
+{
+  font-family: 'Vollkorn', serif;
+  font-size: 40px;
+  color: #000044;
+  background: transparent;
+  clear: both;
+  padding-bottom: 25px;
+}
+
+h3#rating
+{
+  font-family: 'Vollkorn', serif;
+  font-size: 40px;
+  color: #000044;
+  background: transparent;
+  clear: both;
+  padding-bottom: 20px;
+}
+
+h2.title, .fuck, .close-reveal-modal
+{
+  font-family: 'Vollkorn', serif;
+  font-size: 30px;
+  color: #000044;
+  background: transparent;
+  clear: both;
+}
+
+.newmarker
+{
+  font-family: 'Vollkorn', serif;
+  font-size: 16px;
+  color: #000044;
+
+}
+
+div p
+{
+  font-family: 'Vollkorn', serif;
+  font-size: 16px;
+  color: #000044;
 }

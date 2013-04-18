@@ -5,7 +5,7 @@
 #  id                        :integer          not null, primary key
 #  name                      :string(255)
 #  address                   :string(255)
-#  rating                    :integer          default(0)
+#  rating                    :float            default(0.0)
 #  total_votes               :integer          default(0)
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
@@ -19,7 +19,8 @@
 #  foursquare_identification :string(255)
 #  venue_url                 :string(255)      default("")
 #  distance                  :integer
-#  ratio                     :decimal(, )      default(0.0)
+#  ratio                     :float            default(0.0)
+#  foursquare_rating         :float            default(0.0)
 #
 
 
