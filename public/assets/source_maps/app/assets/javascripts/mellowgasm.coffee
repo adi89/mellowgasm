@@ -1,22 +1,3 @@
-# class Home
-#   @document_ready: ->
-#     $('#reg_form').on('click', 'a[data-clear-form]', Home.clear_reg_form)
-#     $('.top-bar-section').on('click', '.login', Home.show_reg_form)
-#     $('body').on('keyup', '#search', Home.filter_interviews)
-#   @clear_reg_form: (e) ->
-#     e.preventDefault()
-#     $("#reg_form").hide()
-#   @show_reg_form: (e) ->
-#     e.preventDefault()
-#     $("#reg_form").show()
-#   @filter_interviews: (e) ->
-#     query = $('#search').val()
-#     settings =
-#       dataType: 'script'
-#       type: 'get'
-#       url: "/interviews/search?query=#{query}"
-#     $.ajax(settings)
-
 window.app =
   document_ready: ->
     $('#reg_form').on('click', 'a[data-clear-form]', app.clear_reg_form)
@@ -29,6 +10,7 @@ window.app =
     $('.landingmessage').fadeIn(1000)
     $('.landingmessagelogin').hide()
     $('.landingmessagelogin').fadeIn(6000)
+
   token_generated: (e, token) ->
     e.preventDefault()
     $(this).siblings('form').append("<input type=hidden name=token value=#{token.id}>").submit()
@@ -49,6 +31,19 @@ window.app =
     e.preventDefault()
     $('#venue_show').foundation('reveal', 'close')
     $('#TheLowDown').empty()
+  give_morris: (data) ->
+    console.log("hi")
+    console.log(data)
+    Morris.Donut
+      element: "donut-example"
+      data: [
+        label: "Females"
+        value: data
+      ,
+        label: "Males"
+        value: 100 - data
+      ]
+
 $(document).ready(app.document_ready)
 
 

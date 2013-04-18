@@ -9,7 +9,5 @@
 -else
   %h3{:style => 'clear:both;'}="#{@venue.foursquare_rating.round(2) * 100}% foursquare rating"
 
-
 -if !@photos.present?
   %h5= "Sorry, foursquare hasn't supplied much info on #{@venue.name}. Why don't you go out there and find out ;)"
-

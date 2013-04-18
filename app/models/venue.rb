@@ -56,21 +56,21 @@ class Venue < ActiveRecord::Base
     q = client.search_venues(options = {:ll => "#{location.latitude}, #{location.longitude}", :limit => 50, :intent => 'browse', :radius => 1000, :categoryId => motivation.categoryId})
     q["groups"].first["items"].each do |i|
 
-    a=  Venue.create(foursquare_identification: i["id"], phone: i["contact"]["phone"], address: i["location"]["address"], crossStreet: i["location"]["crossStreet"], name: i["name"], latitude: i["location"]["lat"], longitude: i["location"]["lng"], :twitter => i["contact"]["twitter"], :distance => i["location"]["distance"])
+      a=  Venue.create(foursquare_identification: i["id"], phone: i["contact"]["phone"], address: i["location"]["address"], crossStreet: i["location"]["crossStreet"], name: i["name"], latitude: i["location"]["lat"], longitude: i["location"]["lng"], :twitter => i["contact"]["twitter"], :distance => i["location"]["distance"])
       a.name.gsub("'", "")
       a.save
       location.venues << a
       motivation.venues << a
-     end
+    end
   end
 
-def self.algorithm(ratio)
-  y = -4 * (ratio - 0.6)**2 + 1
-end
+  def self.algorithm(ratio)
+    y = -4 * (ratio - 0.6)**2 + 1
+  end
 
   def self.top_picks
 
-    Venue.all.sort_by{|i| (0.35* Venue.algorithm(i.ratio) + 0.4 * i.foursquare_rating +  0.25 * i.checkins)}.last(10).map{|i| i.name}.reverse.
+    Venue.all.sort_by{|i| (0.35* Venue.algorithm(i.ratio) + 0.4 * i.foursquare_rating +  0.25 * i.checkins)}.last(10).map{|i| i.name}.reverse
   end
 
 
