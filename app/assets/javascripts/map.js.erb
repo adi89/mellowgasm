@@ -1,4 +1,5 @@
 var map;
+// var infowindow = new google.maps.InfoWindow();
 
 function display_map(lat, lng, zoom)
 {
@@ -18,9 +19,10 @@ function add_marker(lat, lng, title, bullshit, venue, distance, address, ven_add
 
   var latlng = new google.maps.LatLng(lat, lng, title);
   var marker = new google.maps.Marker({position: latlng, map: map, title: title});
-  var infowindow = new google.maps.InfoWindow({
-    content: stuff  } );
+   infowindow = new google.maps.InfoWindow();
   google.maps.event.addListener(marker, 'click', function() {
+    infowindow.close();
+    infowindow.setContent(stuff);
     infowindow.open(map,marker);
   });
 
