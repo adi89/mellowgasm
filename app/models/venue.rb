@@ -33,18 +33,18 @@ class Venue < ActiveRecord::Base
     client = Foursquare2::Client.new(:client_id => ENV["F4_CLIENT"], :client_secret => ENV["F4_CLIENT_SECRET"])
     b = client.venue(venue.foursquare_identification)
 
-    if b["photos"]["groups"].second["items"].present?
+    if b.try(:photos).try(:groups).try(:second).try(:items).present?
       users = b["photos"]["groups"].second["items"].map{|i| i["user"]["gender"]}
       guy = users.count("male").to_f
       girl = users.count("female").to_f
       venue.ratio = (girl/(girl + guy)).round(2)
-      venue.foursquare_rating = b["rating"]/10.0
+      venue.foursquare_rating = b["rating"]/10.0 if b["rating"].present?
       venue.checkins = (b["stats"]["checkinsCount"].to_f)/(28000.to_f)
       venue.save
       return true
     else
-      venue.foursquare_rating = b["rating"]/10.0
-      venue.checkins = (b["stats"]["checkinsCount"].to_f)/(28000.to_f) if b["stats"].present?
+      venue.foursquare_rating = b.try(:rating)/10.0 if b.rating.present?
+      venue.checkins = (b["stats"]["checkinsCount"].to_f)/(28000.to_f) if b["stats"].present? if b.try(:stats).try(:checkinsCount)
       venue.save
       return false
     end
