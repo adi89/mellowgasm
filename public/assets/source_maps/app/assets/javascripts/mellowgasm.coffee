@@ -34,16 +34,18 @@ window.app =
   give_morris: (data) ->
     console.log("hi")
     console.log(data)
-    Morris.Donut
-      element: "donut-example"
-      colors: ["#f7a0f7", "#b7e4f3"]
-      data: [
-        label: "Females"
-        value: data
-      ,
-        label: "Males"
-        value: 100 - data
-      ]
+
+    if data > 0
+      Morris.Donut
+        element: "donut-example"
+        colors: ["#f7a0f7", "#b7e4f3"]
+        data: [
+          label: "Females"
+          value: data
+        ,
+          label: "Males"
+          value: 100 - data
+        ]
 
 $(document).ready(app.document_ready)
 
