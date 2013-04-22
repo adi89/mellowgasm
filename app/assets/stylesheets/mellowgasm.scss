@@ -409,7 +409,7 @@ h3.title, h2.title
 
 }
 
-div p
+div p, tspan
 {
   font-family: 'Vollkorn', serif;
   font-size: 16px;
@@ -419,4 +419,8 @@ div p
 #venue_show
 {
   width: 600px;
+}
+
+#donut-example{
+  min-height: 400px;
 }

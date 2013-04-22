@@ -28,9 +28,6 @@ class Venue < ActiveRecord::Base
   attr_accessible :name, :address, :rating, :total_votes, :latitude, :longitude, :crossStreet, :foursquare_identification, :phone, :distance, :twitter
   has_many :photos
   belongs_to :location
-  # validates :foursquare_identification, :uniqueness => true
-  # after_save :ratio
-  # after_save :rate
 
   def self.ratio(venue)
     client = Foursquare2::Client.new(:client_id => ENV["F4_CLIENT"], :client_secret => ENV["F4_CLIENT_SECRET"])
@@ -59,33 +56,22 @@ class Venue < ActiveRecord::Base
     q = client.search_venues(options = {:ll => "#{location.latitude}, #{location.longitude}", :limit => 50, :intent => 'browse', :radius => 1000, :categoryId => motivation.categoryId})
     q["groups"].first["items"].each do |i|
 
-    a=  Venue.create(foursquare_identification: i["id"], phone: i["contact"]["phone"], address: i["location"]["address"], crossStreet: i["location"]["crossStreet"], name: i["name"], latitude: i["location"]["lat"], longitude: i["location"]["lng"], :twitter => i["contact"]["twitter"], :distance => i["location"]["distance"])
+      a=  Venue.create(foursquare_identification: i["id"], phone: i["contact"]["phone"], address: i["location"]["address"], crossStreet: i["location"]["crossStreet"], name: i["name"], latitude: i["location"]["lat"], longitude: i["location"]["lng"], :twitter => i["contact"]["twitter"], :distance => i["location"]["distance"])
       a.name.gsub("'", "")
       a.save
       location.venues << a
       motivation.venues << a
-      # Venue.ratio(a)
-      # location.venues << venue
-      # motivation.venues << venue
-     end
+    end
   end
 
+  def self.algorithm(ratio)
+    y = -4 * (ratio - 0.6)**2 + 1
+  end
 
   def self.top_picks
-    Venue.all.sort_by{|i| (0.35* i.ratio + 0.4 * i.foursquare_rating +  0.25 * i.checkins)}.last(10).map{|i| i.name}.reverse
 
-    #top venues that the user has found.
-    #gives the 10 venues with the highest ratios.
+    Venue.all.sort_by{|i| (0.35* Venue.algorithm(i.ratio) + 0.4 * i.foursquare_rating +  0.25 * i.checkins)}.last(10).map{|i| i.name}.reverse
   end
 
-  def rate
-    ratio = (self.ratio/0.70)
-    client = Foursquare2::Client.new(:client_id => ENV["F4_CLIENT"], :client_secret => ENV["F4_CLIENT_SECRET"])
-    a = client.venue(self.foursquare_identification)
-    checkins = (a["stats"]["checkinsCount"].to_f)/30000.00
-    foursqRating = (a["rating"].to_f/10.00)
-    self.rating = ((foursqRating * 0.40) + (checkins * 0.25) + (ratio * 0.35)).round(2)
-    self.save
-  end
 
 end

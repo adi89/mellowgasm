@@ -15,7 +15,7 @@ function display_map(lat, lng, zoom)
 
 function add_marker(lat, lng, title, bullshit, venue, distance, address, ven_address, ven_crossStreet)
 {
-  var stuff = "<div class='newmarker'><a href='venues/" + bullshit + "'data-remote = 'true'>"+venue+"</a></div>" + "<p>" +ven_address+ " Cross Street - "+ven_crossStreet+".</p>"+ "<p>Distance from " +address+ " is "+distance+" meters.</p>"
+  var stuff = "<div class='newmarker'><a href='venues/" + bullshit + "'data-remote='true' class='v_link'>"+venue+"</a></div>" + "<p>" +ven_address+ " Cross Street - "+ven_crossStreet+".</p>"+ "<p>Distance from " +address+ " is "+distance+" meters.</p>"
 
   var latlng = new google.maps.LatLng(lat, lng, title);
   var marker = new google.maps.Marker({position: latlng, map: map, title: title});
