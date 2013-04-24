@@ -11,5 +11,5 @@ Mellowgasm::Application.routes.draw do
 
   post '/new_map' => 'home#new_map'
 
-  get 'venues/:id' => 'venues#ven_show'
+  get 'venues/:id' => 'venues#ven_show', :as => :venue
 end

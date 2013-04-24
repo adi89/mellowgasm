@@ -8,7 +8,7 @@ class VenuesController < ApplicationController
     end
 
     Venue.ratio(@venue)
-    @photos = @venue.photos
+    @photos = @venue.photos.shuffle.take(10)
 
     #venue show. data put in format. if ratio exists. and u check the same in the other one as well.
 

@@ -1,4 +1,4 @@
 %h3.title MellowPicks
 %ol
   -@top_picks.each do |top|
-    %li= top
+    %li= link_to(top.name, venue_path(top.id), :remote => true)

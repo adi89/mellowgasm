@@ -1,7 +1,7 @@
-%h2.title=@venue.name
+%h2.title="#{@venue.name} - #{@venue.address}"
 -@photos.each do |photo|
   =image_tag(photo.url, :style => "height: 100px; width: 100px; float: left;")
-%h5#sorry_sm{:style => 'clear:both;'}= "@#{@venue.twitter}" if @venue.twitter.present?
+%h5#sorry_sm{:style => 'clear:both;'}= link_to("@#{@venue.twitter}", "http://www.twitter.com/#{@venue.twitter}") if @venue.twitter.present?
 %h6#sorry_sm{:style => 'clear:both;'}= "+1#{@venue.phone}" if @venue.phone.present?
 / %h5= link_to("Visit #{@venue.name}", url => "#{@venue.url}") if @venue.url.present?
 - if @venue.ratio > 0.0

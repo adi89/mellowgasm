@@ -8,6 +8,7 @@ Location.delete_all
 
 Location.create(:address => '575 Grand Street NYC')
 Location.create(:address => '10 East 21st Street NYC')
+Location.create(:address => '13th and 9th ave nyc')
 
 
 
@@ -19,7 +20,8 @@ Motivation.create(:desire => 'Lounges', :categoryId => '4bf58dd8d48988d121941735
 Motivation.create(:desire => 'The Club Scene', :categoryId => '4bf58dd8d48988d11f941735')
 
 Venue.make_venues(Location.first, Motivation.first)
-
+Venue.make_venues(Location.all.second, Motivation.first)
+Venue.make_venues(Location.last, Motivation.first)
 
 Venue.all.each do |venue|
   Photo.photo_create(venue)

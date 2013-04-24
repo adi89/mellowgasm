@@ -70,7 +70,7 @@ class Venue < ActiveRecord::Base
 
   def self.top_picks
 
-    Venue.all.sort_by{|i| (0.35* Venue.algorithm(i.ratio) + 0.4 * i.foursquare_rating +  0.25 * i.checkins)}.last(10).map{|i| i.name}.reverse
+    Venue.all.sort_by{|i| (0.35* Venue.algorithm(i.ratio) + 0.4 * i.foursquare_rating +  0.25 * i.checkins)}.last(10).reverse
   end
 
 
