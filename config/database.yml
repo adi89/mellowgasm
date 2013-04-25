@@ -15,13 +15,3 @@ test:
   pool: 5
   username: AdiSingh
   password:
-
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: mellowgasm_production
-  pool: 5
-  host: localhost
-  username: AdiSingh
-  password:

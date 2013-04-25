@@ -23,6 +23,12 @@ class HomeController < ApplicationController
       @venues = @location.venues.where(:motivation_id => @motivation.id)
       @top_picks = Venue.top_picks
   end
+
+  def landing
+
+  end
+
+
 end
 
 

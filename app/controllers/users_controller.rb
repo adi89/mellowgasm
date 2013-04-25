@@ -14,9 +14,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(params[:user])
-    binding.pry
     @user.locations << Location.find_or_create_by_latitude(Geocoder.search(@user.address).first.latitude)
 
+    # binding.pry
   end
 
 end
