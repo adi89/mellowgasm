@@ -13,12 +13,34 @@
 
 ActiveRecord::Schema.define(:version => 20130418054809) do
 
+  create_table "articles", :force => true do |t|
+    t.text     "title"
+    t.text     "url"
+    t.text     "summary"
+    t.string   "pub"
+    t.text     "guid"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "audios", :force => true do |t|
+    t.string   "name"
+    t.text     "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "friends", :force => true do |t|
     t.string   "name"
     t.string   "phone"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+  end
+
+  create_table "images", :force => true do |t|
+    t.string "name"
+    t.text   "url"
   end
 
   create_table "locations", :force => true do |t|
@@ -28,6 +50,14 @@ ActiveRecord::Schema.define(:version => 20130418054809) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "name"
+    t.string   "category"
+    t.text     "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "motivations", :force => true do |t|
@@ -43,6 +73,13 @@ ActiveRecord::Schema.define(:version => 20130418054809) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "venue_id"
+  end
+
+  create_table "ryans", :force => true do |t|
+    t.string   "name"
+    t.text     "img"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -81,6 +118,13 @@ ActiveRecord::Schema.define(:version => 20130418054809) do
     t.float    "ratio",                     :default => 0.0
     t.float    "foursquare_rating",         :default => 0.0
     t.float    "checkins",                  :default => 0.0
+  end
+
+  create_table "videos", :force => true do |t|
+    t.string   "name"
+    t.text     "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

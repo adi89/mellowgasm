@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     @friend = Friend.new
     @friends = Friend.all
     @location = @auth.locations.first
-    @venues = @location.venues
+    @venues = @location.venues.count > 35 ? @location.venues.select{|i| i.foursquare_rating > 0.88} : @location.venues
     @top_picks = Venue.top_picks
     # @venues = @location.venues
   end
@@ -16,12 +16,16 @@ class HomeController < ApplicationController
     @location = Location.find_or_create_by_address(params['serchmap'])
     if !@auth.locations.include? @location
       @auth.locations << @location
+
     end
     if !@location.venues.where(:motivation_id => @motivation.id).present?
         Venue.make_venues(@location, @motivation)
       end
+
+
       @venues = @location.venues.where(:motivation_id => @motivation.id)
       @top_picks = Venue.top_picks
+
   end
 
   def landing

@@ -1,12 +1,52 @@
 var map;
 // var infowindow = new google.maps.InfoWindow();
 
+
+
+
 function display_map(lat, lng, zoom)
 {
+
+  var styles = [
+  {
+    featureType: "landscape",
+    stylers: [
+      { color: '#eeddee' }
+    ]
+  },{
+    featureType: "natural",
+    stylers: [
+      { hue: '#000044' },
+      { weight: 2}
+    ]
+  },{
+    featureType: "road",
+    stylers: [
+      { hue: '#f7a0f7' },
+      { saturation: -70 }
+    ]
+  },{
+    featureType: "building",
+    elementType: "labels",
+    stylers: [
+      { hue: '#000066' }
+    ]
+  },{
+    featureType: "poi", //points of interest
+    stylers: [
+      { hue: '#0044ff' }
+    ]
+  }
+];
+
+
+
   var mapOptions = {
     center: new google.maps.LatLng(lat, lng),
     zoom: zoom,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    disableDefaultUI: true,
+    styles: styles
   };
 
   var canvas = $('#map_canvas')[0];
@@ -18,7 +58,7 @@ function add_marker(lat, lng, title, bullshit, venue, distance, address, ven_add
   var stuff = "<div class='newmarker'><a href='venues/" + bullshit + "'data-remote='true' class='v_link'>"+venue+"</a></div>" + "<p>" +ven_address+ " Cross Street - "+ven_crossStreet+".</p>"+ "<p>Distance from " +address+ " is "+distance+" meters.</p>"
 
   var latlng = new google.maps.LatLng(lat, lng, title);
-  var marker = new google.maps.Marker({position: latlng, map: map, title: title});
+  var marker = new google.maps.Marker({position: latlng, map: map, title: title, icon: "http://s18.postimg.org/bflw11amd/dancinghall.png"});
    infowindow = new google.maps.InfoWindow();
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.close();

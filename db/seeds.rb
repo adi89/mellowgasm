@@ -6,9 +6,10 @@ User.delete_all
 Location.delete_all
 
 
-Location.create(:address => '575 Grand Street NYC')
+
 Location.create(:address => '10 East 21st Street NYC')
 Location.create(:address => '13th and 9th ave nyc')
+Location.create(:address => '575 Grand Street NYC')
 
 
 

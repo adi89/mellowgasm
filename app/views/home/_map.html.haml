@@ -1,4 +1,4 @@
 %script
-  = "display_map(#{@location.latitude}, #{@location.longitude}, 13);"
+  = "display_map(#{@location.latitude}, #{@location.longitude}, 14);"
   - @venues.each do |v|
     = "add_marker(#{v.latitude}, #{v.longitude}, 'Title', '#{v.id}', '#{v.name.gsub("'","")}', '#{v.distance}', '#{v.location.address}', '#{v.address}', '#{v.crossStreet}');"
